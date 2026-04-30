@@ -4,14 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>TCHOP-NGOA | Restauration UY1</title>
-  <link rel="stylesheet" href="css/global.css">
-  <link rel="stylesheet" href="css/accueil.css">
+  <link rel="stylesheet" href="/css/global.css">
+  <link rel="stylesheet" href="/css/accueil.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-  <!-- HEADER -->
   <header class="header">
     <div class="header-left">
       <span class="logo-text">TCHOP<span class="logo-tiret">-</span>NGOA</span>
@@ -19,22 +18,20 @@
     </div>
     <div class="header-right">
       <button class="lang-btn" id="langBtn">🇬🇧 EN</button>
-      <a href="admin/login.html" class="admin-link"><i class="fas fa-lock"></i></a>
+      <a href="/admin/login.html" class="admin-link"><i class="fas fa-lock"></i></a>
     </div>
   </header>
 
-  <!-- HERO -->
   <section class="hero">
     <div class="hero-content">
-      <h1 class="hero-title" data-i18n="hero_title">Votre avis améliore<br>votre restaurant</h1>
-      <p class="hero-sub" data-i18n="hero_sub">Notez la restauration de l'Université de Yaoundé 1</p>
-      <a href="form.html" class="btn-primary" data-i18n="btn_donner_avis">
+      <h1 class="hero-title" data-i18n="hero_title">Votre avis ameliore votre restaurant</h1>
+      <p class="hero-sub" data-i18n="hero_sub">Notez la restauration de l'Universite de Yaounde 1</p>
+      <a href="form.html" class="btn-primary" data-i18n="btn_donner_avis"></a>
         <i class="fas fa-star"></i> Donner mon avis
       </a>
     </div>
   </section>
 
-  <!-- STATS -->
   <section class="stats-section">
     <div class="stat-card">
       <i class="fas fa-comment-dots stat-icon"></i>
@@ -49,11 +46,10 @@
     <div class="stat-card">
       <i class="fas fa-store stat-icon"></i>
       <span class="stat-number" id="totalEtablissements">--</span>
-      <span class="stat-label" data-i18n="stat_etablissements">Établissements</span>
+      <span class="stat-label" data-i18n="stat_etablissements">Etablissements</span>
     </div>
   </section>
 
-  <!-- MENU DU JOUR -->
   <section class="menu-section">
     <h2 class="section-title" data-i18n="menu_titre">
       <i class="fas fa-utensils"></i> Menu du jour
@@ -65,7 +61,6 @@
     </div>
   </section>
 
-  <!-- CLASSEMENT -->
   <section class="classement-section">
     <h2 class="section-title" data-i18n="classement_titre">
       <i class="fas fa-trophy"></i> Classement du moment
@@ -75,20 +70,19 @@
         <i class="fas fa-spinner fa-spin"></i> Chargement...
       </div>
     </div>
-    <a href="classement.html" class="btn-secondary" data-i18n="voir_classement">
+    <a href="/classement.html" class="btn-secondary" data-i18n="voir_classement">
       Voir le classement complet
     </a>
   </section>
 
-  <!-- FOOTER -->
   <footer class="footer">
-    <p>TCHOP-NGOA &copy; 2026 | Université de Yaoundé 1</p>
-    <p><a href="kiosque-inscription.html" data-i18n="footer_kiosque">Enregistrer mon kiosque</a></p>
+    <p>TCHOP-NGOA &copy; 2026 | Universite de Yaounde 1</p>
+    <p><a href="/kiosque-inscription.html" data-i18n="footer_kiosque">Enregistrer mon kiosque</a></p>
   </footer>
 
-  <script type="module" src="js/i18n.js"></script>
-  <script type="module" src="js/menu-public.js"></script>
-  <script type="module" src="js/classement.js"></script>
+  <script type="module" src="/js/i18n.js"></script>
+  <script type="module" src="/js/menu-public.js"></script>
+  <script type="module" src="/js/classement.js"></script>
 
 </body>
 </html>

@@ -1,61 +1,314 @@
-<div class="critere-item">
-          <label class="critere-label">12. Sécurité alimentaire perçue</label>
-          <div class="etoiles" data-critere="securite_alim">
-            <span class="etoile" data-val="1">★</span>
-            <span class="etoile" data-val="2">★</span>
-            <span class="etoile" data-val="3">★</span>
-            <span class="etoile" data-val="4">★</span>
-            <span class="etoile" data-val="5">★</span>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TCHOP-NGOA | Donner mon avis</title>
+  <link rel="stylesheet" href="/css/global.css">
+  <link rel="stylesheet" href="/css/form.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <header class="header">
+    <a href="/index.html" class="back-btn">
+      <i class="fas fa-arrow-left"></i>
+    </a>
+    <span class="header-title">Donner mon avis</span>
+    <button class="lang-btn" id="langBtn">🇬🇧 EN</button>
+  </header>
+
+  <form id="formAvis" class="form-container">
+
+    <div class="form-step active" id="step1">
+      <div class="step-header">
+        <span class="step-num">1/4</span>
+        <h2 class="step-title">Quel etablissement ?</h2>
+      </div>
+
+      <div class="type-grid">
+        <button type="button" class="type-btn" id="btnRestaurant" onclick="choisirType('restaurant')">
+          <i class="fas fa-utensils"></i>
+          <span>Restaurant Universitaire</span>
+        </button>
+        <button type="button" class="type-btn" id="btnKiosque" onclick="choisirType('kiosque')">
+          <i class="fas fa-store"></i>
+          <span>Kiosque du Campus</span>
+        </button>
+      </div>
+
+      <div id="listeEtablissements" class="liste-etablissements hidden">
+        <p class="liste-titre">Choisissez l'etablissement :</p>
+        <div id="etablissementsGrid"></div>
+      </div>
+
+      <div class="gps-status" id="gpsStatus">
+        <i class="fas fa-map-marker-alt"></i>
+        <span id="gpsMsg">Verification de votre position...</span>
+      </div>
+    </div>
+
+    <div class="form-step" id="step2">
+      <div class="step-header">
+        <span class="step-num">2/4</span>
+        <h2 class="step-title">Votre visite</h2>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">
+          Matricule UY1 <span class="optionnel">(optionnel)</span>
+        </label>
+        <input type="text" id="matricule" class="form-input"
+               placeholder="Ex: 24F2067" maxlength="7">
+        <span class="matricule-feedback" id="matriculeFeedback"></span>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Filiere d'etudes</label>
+        <select id="filiere" class="form-select">
+          <option value="">-- Choisir --</option>
+          <option value="informatique">Informatique</option>
+          <option value="droit">Droit</option>
+          <option value="medecine">Medecine</option>
+          <option value="falsh">FALSH</option>
+          <option value="sciences">Sciences</option>
+          <option value="enset">ENSET</option>
+          <option value="iut">IUT</option>
+          <option value="autre">Autre</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Niveau d'etudes</label>
+        <div class="radio-group">
+          <label class="radio-btn"><input type="radio" name="niveau" value="L1"> L1</label>
+          <label class="radio-btn"><input type="radio" name="niveau" value="L2"> L2</label>
+          <label class="radio-btn"><input type="radio" name="niveau" value="L3"> L3</label>
+          <label class="radio-btn"><input type="radio" name="niveau" value="M1"> M1</label>
+          <label class="radio-btn"><input type="radio" name="niveau" value="M2"> M2</label>
+          <label class="radio-btn"><input type="radio" name="niveau" value="Doc"> Doc</label>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Repas evalue <span class="obligatoire">*</span></label>
+        <div class="radio-group">
+          <label class="radio-btn"><input type="radio" name="repas" value="dejeuner" required> Dejeuner</label>
+          <label class="radio-btn"><input type="radio" name="repas" value="diner"> Diner</label>
+        </div>
+      </div><div class="form-group">
+        <label class="form-label">Plat(s) consomme(s)</label>
+        <input type="text" id="plats" class="form-input"
+               placeholder="Ex: Riz + poulet + haricots">
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Fruits recus</label>
+        <div class="checkbox-group">
+          <label class="checkbox-btn"><input type="checkbox" name="fruits" value="ananas"> Ananas</label>
+          <label class="checkbox-btn"><input type="checkbox" name="fruits" value="pasteque"> Pasteque</label>
+          <label class="checkbox-btn"><input type="checkbox" name="fruits" value="orange"> Orange</label>
+          <label class="checkbox-btn"><input type="checkbox" name="fruits" value="grenadine"> Grenadine</label>
+          <label class="checkbox-btn"><input type="checkbox" name="fruits" value="banane"> Banane</label>
+          <label class="checkbox-btn"><input type="checkbox" name="fruits" value="aucun"> Aucun fruit</label>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Prix paye</label>
+        <div class="radio-group">
+          <label class="radio-btn"><input type="radio" name="prix" value="100"> 100 CFA</label>
+          <label class="radio-btn"><input type="radio" name="prix" value="200"> 200 CFA</label>
+          <label class="radio-btn"><input type="radio" name="prix" value="autre"> Autre</label>
+        </div>
+      </div>
+
+      <button type="button" class="btn-primary btn-full" onclick="allerStep(3)">
+        Continuer <i class="fas fa-arrow-right"></i>
+      </button>
+    </div>
+
+    <div class="form-step" id="step3">
+      <div class="step-header">
+        <span class="step-num">3/4</span>
+        <h2 class="step-title">Votre evaluation</h2>
+        <p class="step-desc">Notez chaque critere de 1 a 5 etoiles</p>
+      </div>
+
+      <div class="criteres-list">
+
+        <div class="critere-item">
+          <label class="critere-label">1. Qualite gustative <span class="obligatoire">*</span></label>
+          <div class="etoiles" data-critere="qualite_gustative">
+            <span class="etoile" data-val="1">&#9733;</span>
+            <span class="etoile" data-val="2">&#9733;</span>
+            <span class="etoile" data-val="3">&#9733;</span>
+            <span class="etoile" data-val="4">&#9733;</span>
+            <span class="etoile" data-val="5">&#9733;</span>
+          </div>
+        </div>
+
+        <div class="critere-item">
+          <label class="critere-label">2. Quantite servie <span class="obligatoire">*</span></label>
+          <div class="etoiles" data-critere="quantite">
+            <span class="etoile" data-val="1">&#9733;</span>
+            <span class="etoile" data-val="2">&#9733;</span>
+            <span class="etoile" data-val="3">&#9733;</span>
+            <span class="etoile" data-val="4">&#9733;</span>
+            <span class="etoile" data-val="5">&#9733;</span>
+          </div>
+        </div>
+
+        <div class="critere-item">
+          <label class="critere-label">3. Rapport qualite-prix <span class="obligatoire">*</span></label>
+          <div class="etoiles" data-critere="rapport_qualite_prix">
+            <span class="etoile" data-val="1">&#9733;</span>
+            <span class="etoile" data-val="2">&#9733;</span>
+            <span class="etoile" data-val="3">&#9733;</span>
+            <span class="etoile" data-val="4">&#9733;</span>
+            <span class="etoile" data-val="5">&#9733;</span>
+          </div>
+        </div>
+
+        <div class="critere-item">
+          <label class="critere-label">4. Proprete de la salle <span class="obligatoire">*</span></label>
+          <div class="etoiles" data-critere="proprete_salle">
+            <span class="etoile" data-val="1">&#9733;</span>
+            <span class="etoile" data-val="2">&#9733;</span>
+            <span class="etoile" data-val="3">&#9733;</span>
+            <span class="etoile" data-val="4">&#9733;</span>
+            <span class="etoile" data-val="5">&#9733;</span>
+          </div>
+        </div><div class="critere-item">
+          <label class="critere-label">5. Proprete des infrastructures <span class="obligatoire">*</span></label>
+          <div class="etoiles" data-critere="proprete_infra">
+            <span class="etoile" data-val="1">&#9733;</span>
+            <span class="etoile" data-val="2">&#9733;</span>
+            <span class="etoile" data-val="3">&#9733;</span>
+            <span class="etoile" data-val="4">&#9733;</span>
+            <span class="etoile" data-val="5">&#9733;</span>
+          </div>
+        </div>
+
+        <div class="critere-item">
+          <label class="critere-label">6. Rapidite du service <span class="obligatoire">*</span></label>
+          <div class="etoiles" data-critere="rapidite_service">
+            <span class="etoile" data-val="1">&#9733;</span>
+            <span class="etoile" data-val="2">&#9733;</span>
+            <span class="etoile" data-val="3">&#9733;</span>
+            <span class="etoile" data-val="4">&#9733;</span>
+            <span class="etoile" data-val="5">&#9733;</span>
+          </div>
+        </div>
+
+        <div class="critere-item">
+          <label class="critere-label">7. Amabilite du personnel <span class="obligatoire">*</span></label>
+          <div class="etoiles" data-critere="amabilite_personnel">
+            <span class="etoile" data-val="1">&#9733;</span>
+            <span class="etoile" data-val="2">&#9733;</span>
+            <span class="etoile" data-val="3">&#9733;</span>
+            <span class="etoile" data-val="4">&#9733;</span>
+            <span class="etoile" data-val="5">&#9733;</span>
+          </div>
+        </div>
+
+        <div class="critere-item">
+          <label class="critere-label">8. Hygiene des couverts <span class="obligatoire">*</span></label>
+          <div class="etoiles" data-critere="couverts">
+            <span class="etoile" data-val="1">&#9733;</span>
+            <span class="etoile" data-val="2">&#9733;</span>
+            <span class="etoile" data-val="3">&#9733;</span>
+            <span class="etoile" data-val="4">&#9733;</span>
+            <span class="etoile" data-val="5">&#9733;</span>
+          </div>
+        </div>
+
+        <div class="critere-item">
+          <label class="critere-label">9. Qualite des fruits</label>
+          <div class="etoiles" data-critere="qualite_fruits">
+            <span class="etoile" data-val="1">&#9733;</span>
+            <span class="etoile" data-val="2">&#9733;</span>
+            <span class="etoile" data-val="3">&#9733;</span>
+            <span class="etoile" data-val="4">&#9733;</span>
+            <span class="etoile" data-val="5">&#9733;</span>
+          </div>
+        </div>
+
+        <div class="critere-item">
+          <label class="critere-label">10. Diversite du menu</label>
+          <div class="etoiles" data-critere="diversite_menu">
+            <span class="etoile" data-val="1">&#9733;</span>
+            <span class="etoile" data-val="2">&#9733;</span>
+            <span class="etoile" data-val="3">&#9733;</span>
+            <span class="etoile" data-val="4">&#9733;</span>
+            <span class="etoile" data-val="5">&#9733;</span>
+          </div>
+        </div>
+
+        <div class="critere-item">
+          <label class="critere-label">11. Gestion des dechets</label>
+          <div class="etoiles" data-critere="gestion_dechets">
+            <span class="etoile" data-val="1">&#9733;</span>
+            <span class="etoile" data-val="2">&#9733;</span>
+            <span class="etoile" data-val="3">&#9733;</span>
+            <span class="etoile" data-val="4">&#9733;</span>
+            <span class="etoile" data-val="5">&#9733;</span>
+          </div>
+        </div>
+
+        <div class="critere-item">
+          <label class="critere-label">12. Securite alimentaire</label>
+          <div class="etoiles" data-critere="securite_alim"><span class="etoile" data-val="1">&#9733;</span>
+            <span class="etoile" data-val="2">&#9733;</span>
+            <span class="etoile" data-val="3">&#9733;</span>
+            <span class="etoile" data-val="4">&#9733;</span>
+            <span class="etoile" data-val="5">&#9733;</span>
           </div>
         </div>
 
       </div>
 
-      <p class="obligatoire-note">* Critères obligatoires</p>
+      <p class="obligatoire-note">* Criteres obligatoires</p>
 
       <button type="button" class="btn-primary btn-full" onclick="allerStep(4)">
         Continuer <i class="fas fa-arrow-right"></i>
       </button>
     </div>
 
-    <!-- ÉTAPE 4 : Commentaire et envoi -->
     <div class="form-step" id="step4">
       <div class="step-header">
         <span class="step-num">4/4</span>
-        <h2 class="step-title">Commentaire & Envoi</h2>
+        <h2 class="step-title">Commentaire et Envoi</h2>
       </div>
 
-      <!-- Signalement -->
       <div class="form-group">
         <label class="form-label">Signalement (optionnel)</label>
         <select id="signalement" class="form-select">
           <option value="">-- Aucun signalement --</option>
-          <option value="intoxication">🔴 Intoxication alimentaire suspectée</option>
-          <option value="corps_etranger">🔴 Corps étranger dans le plat</option>
-          <option value="comportement">🟠 Comportement inapproprié du personnel</option>
-          <option value="proprete_grave">🟡 Manque grave de propreté</option>
-          <option value="rupture_stock">🔵 Rupture de stock précoce</option>
+          <option value="intoxication">Intoxication alimentaire suspectee</option>
+          <option value="corps_etranger">Corps etranger dans le plat</option>
+          <option value="comportement">Comportement inapproprie du personnel</option>
+          <option value="proprete_grave">Manque grave de proprete</option>
+          <option value="rupture_stock">Rupture de stock precoce</option>
         </select>
       </div>
 
-      <!-- Commentaire -->
       <div class="form-group">
         <label class="form-label">Commentaire libre</label>
-        <textarea id="commentaire" class="form-textarea" 
-                  placeholder="Vos suggestions ou remarques..." 
+        <textarea id="commentaire" class="form-textarea"
+                  placeholder="Vos suggestions ou remarques..."
                   maxlength="500"></textarea>
         <span class="char-count"><span id="charCount">0</span>/500</span>
       </div>
 
-      <!-- Confirmation -->
       <div class="form-group">
         <label class="checkbox-confirm">
           <input type="checkbox" id="confirmation" required>
-          <span>Je certifie avoir personnellement consommé un repas dans cet établissement aujourd'hui.</span>
+          <span>Je certifie avoir personnellement consomme un repas dans cet etablissement aujourd'hui.</span>
         </label>
       </div>
 
-      <!-- Bouton envoi -->
       <button type="submit" class="btn-primary btn-full" id="btnEnvoyer">
         <i class="fas fa-paper-plane"></i> Envoyer mon avis
       </button>
@@ -65,10 +318,10 @@
 
   </form>
 
-  <script type="module" src="js/i18n.js"></script>
-  <script type="module" src="js/matricule.js"></script>
-  <script type="module" src="js/antifraude.js"></script>
-  <script type="module" src="js/form.js"></script>
+  <script type="module" src="/js/i18n.js"></script>
+  <script type="module" src="/js/matricule.js"></script>
+  <script type="module" src="/js/antifraude.js"></script>
+  <script type="module" src="/js/form.js"></script>
 
 </body>
 </html>
