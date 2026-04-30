@@ -1,0 +1,157 @@
+.char-count {
+  font-size: 12px;
+  color: var(--gris);
+  float: right;
+  margin-top: 4px;
+}
+
+/* ===== RADIO & CHECKBOX ===== */
+.radio-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.radio-btn {
+  background: var(--blanc);
+  border: 1.5px solid #E0E0E0;
+  border-radius: var(--rayon-sm);
+  padding: 8px 14px;
+  font-size: 13px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.3s;
+}
+
+.radio-btn input {
+  accent-color: var(--vert);
+}
+
+.checkbox-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.checkbox-btn {
+  background: var(--blanc);
+  border: 1.5px solid #E0E0E0;
+  border-radius: var(--rayon-sm);
+  padding: 8px 14px;
+  font-size: 13px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.checkbox-btn input {
+  accent-color: var(--vert);
+}
+
+/* ===== ÉTOILES ===== */
+.criteres-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.critere-item {
+  background: var(--blanc);
+  border-radius: var(--rayon-sm);
+  padding: 14px 16px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+}
+
+.critere-label {
+  display: block;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--noir);
+  margin-bottom: 10px;
+}
+
+.etoiles {
+  display: flex;
+  gap: 8px;
+}
+
+.etoile {
+  font-size: 32px;
+  color: #E0E0E0;
+  cursor: pointer;
+  transition: color 0.2s, transform 0.1s;
+  user-select: none;
+}
+
+.etoile:hover,
+.etoile.active {
+  color: var(--or);
+}
+
+.etoile:active {
+  transform: scale(1.2);
+}
+
+/* ===== CONFIRMATION ===== */
+.checkbox-confirm {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  cursor: pointer;
+  font-size: 14px;
+  color: var(--noir);
+  line-height: 1.5;
+}
+
+.checkbox-confirm input {
+  margin-top: 3px;
+  accent-color: var(--vert);
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+/* ===== BOUTON FULL ===== */
+.btn-full {
+  width: 100%;
+  justify-content: center;
+  margin-top: 8px;
+}
+
+/* ===== STATUT ENVOI ===== */
+.envoi-status {
+  margin-top: 16px;
+  text-align: center;
+  font-size: 14px;
+  padding: 12px;
+  border-radius: var(--rayon-sm);
+}
+
+.envoi-status.succes {
+  background: var(--vert-pale);
+  color: var(--vert);
+}
+
+.envoi-status.erreur {
+  background: var(--rouge-clair);
+  color: var(--rouge);
+}
+
+/* ===== MATRICULE FEEDBACK ===== */
+.matricule-feedback {
+  display: block;
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+.matricule-feedback.valide {
+  color: var(--vert);
+}
+
+.matricule-feedback.invalide {
+  color: var(--rouge);
+}

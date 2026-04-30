@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TCHOP-NGOA | Merci !</title>
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      background: var(--vert-pale);
+      text-align: center;
+      padding: 20px;
+    }
+    .merci-card {
+      background: var(--blanc);
+      border-radius: var(--rayon);
+      padding: 40px 30px;
+      max-width: 400px;
+      width: 100%;
+      box-shadow: var(--ombre);
+    }
+    .merci-icon {
+      font-size: 64px;
+      color: var(--vert);
+      margin-bottom: 20px;
+      animation: bounce 0.6s ease;
+    }
+    @keyframes bounce {
+      0% { transform: scale(0); }
+      60% { transform: scale(1.2); }
+      100% { transform: scale(1); }
+    }
+    .merci-titre {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--vert);
+      margin-bottom: 12px;
+    }
+    .merci-msg {
+      font-size: 15px;
+      color: var(--gris);
+      margin-bottom: 30px;
+      line-height: 1.6;
+    }
+    .merci-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .logo-merci {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--vert);
+      margin-bottom: 24px;
+    }
+    .logo-merci span {
+      color: var(--or);
+    }
+  </style>
+</head>
+<body>
+  <div class="merci-card">
+    <div class="logo-merci">TCHOP<span>-</span>NGOA</div>
+    <div class="merci-icon">
+      <i class="fas fa-check-circle"></i>
+    </div>
+    <h1 class="merci-titre">Merci pour votre avis !</h1>
+    <p class="merci-msg">
+      Votre contribution aide à améliorer la restauration à l'Université de Yaoundé 1. 
+      Chaque avis compte ! 🇨🇲
+    </p>
+    <div class="merci-actions">
+      <a href="index.html" class="btn-primary">
+        <i class="fas fa-home"></i> Retour à l'accueil
+      </a>
+      <a href="classement.html" class="btn-secondary">
+        <i class="fas fa-trophy"></i> Voir le classement
+      </a>
+    </div>
+  </div>
+</body>
+</html>

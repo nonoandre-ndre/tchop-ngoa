@@ -1,0 +1,74 @@
+<div class="critere-item">
+          <label class="critere-label">12. Sécurité alimentaire perçue</label>
+          <div class="etoiles" data-critere="securite_alim">
+            <span class="etoile" data-val="1">★</span>
+            <span class="etoile" data-val="2">★</span>
+            <span class="etoile" data-val="3">★</span>
+            <span class="etoile" data-val="4">★</span>
+            <span class="etoile" data-val="5">★</span>
+          </div>
+        </div>
+
+      </div>
+
+      <p class="obligatoire-note">* Critères obligatoires</p>
+
+      <button type="button" class="btn-primary btn-full" onclick="allerStep(4)">
+        Continuer <i class="fas fa-arrow-right"></i>
+      </button>
+    </div>
+
+    <!-- ÉTAPE 4 : Commentaire et envoi -->
+    <div class="form-step" id="step4">
+      <div class="step-header">
+        <span class="step-num">4/4</span>
+        <h2 class="step-title">Commentaire & Envoi</h2>
+      </div>
+
+      <!-- Signalement -->
+      <div class="form-group">
+        <label class="form-label">Signalement (optionnel)</label>
+        <select id="signalement" class="form-select">
+          <option value="">-- Aucun signalement --</option>
+          <option value="intoxication">🔴 Intoxication alimentaire suspectée</option>
+          <option value="corps_etranger">🔴 Corps étranger dans le plat</option>
+          <option value="comportement">🟠 Comportement inapproprié du personnel</option>
+          <option value="proprete_grave">🟡 Manque grave de propreté</option>
+          <option value="rupture_stock">🔵 Rupture de stock précoce</option>
+        </select>
+      </div>
+
+      <!-- Commentaire -->
+      <div class="form-group">
+        <label class="form-label">Commentaire libre</label>
+        <textarea id="commentaire" class="form-textarea" 
+                  placeholder="Vos suggestions ou remarques..." 
+                  maxlength="500"></textarea>
+        <span class="char-count"><span id="charCount">0</span>/500</span>
+      </div>
+
+      <!-- Confirmation -->
+      <div class="form-group">
+        <label class="checkbox-confirm">
+          <input type="checkbox" id="confirmation" required>
+          <span>Je certifie avoir personnellement consommé un repas dans cet établissement aujourd'hui.</span>
+        </label>
+      </div>
+
+      <!-- Bouton envoi -->
+      <button type="submit" class="btn-primary btn-full" id="btnEnvoyer">
+        <i class="fas fa-paper-plane"></i> Envoyer mon avis
+      </button>
+
+      <div class="envoi-status" id="envoiStatus"></div>
+    </div>
+
+  </form>
+
+  <script type="module" src="js/i18n.js"></script>
+  <script type="module" src="js/matricule.js"></script>
+  <script type="module" src="js/antifraude.js"></script>
+  <script type="module" src="js/form.js"></script>
+
+</body>
+</html>

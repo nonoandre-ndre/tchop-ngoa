@@ -1,6 +1,5 @@
 // ===== SYSTÈME ANTI-FRAUDE - TCHOP-NGOA =====
 
-// ── Couche 1 : Périmètre GPS Campus UY1 ──
 const CAMPUS_UY1 = {
   lat: 3.8612,
   lng: 11.5167,
@@ -20,7 +19,7 @@ function calculerDistance(lat1, lng1, lat2, lng2) {
 async function verifierGPS() {
   return new Promise((resolve) => {
     if (!navigator.geolocation) {
-      resolve({ ok: false, message: 'GPS non disponible sur cet appareil.' });
+      resolve({ ok: false, message: "GPS non disponible sur cet appareil." });
       return;
     }
     navigator.geolocation.getCurrentPosition(
@@ -36,19 +35,18 @@ async function verifierGPS() {
         } else {
           resolve({
             ok: false,
-            message: 'Vous devez être sur le campus UY1 pour soumettre un avis.',
+            message: "Vous devez être sur le campus UY1 pour soumettre un avis.",
             distance
           });
         }
       },
-      () => resolve({ ok: false, message: 'Impossible de vérifier votre position GPS.' })
+      () => resolve({ ok: false, message: "Impossible de vérifier votre position GPS." })
     );
   });
 }
 
-// ── Couche 2 : Anti-doublon localStorage ──
 function verifierDoublon(etablissementId) {
-  const cle = tchop_avis_${etablissementId};
+  const cle = "tchop_avis_" + etablissementId;
   const dernierAvis = localStorage.getItem(cle);
   if (!dernierAvis) return { ok: true };
 
@@ -58,27 +56,26 @@ function verifierDoublon(etablissementId) {
   if (diff < 86400000) {
     return {
       ok: false,
-      message: Vous avez déjà évalué cet établissement aujourd'hui. Revenez dans ${heuresRestantes}h.
+      message: "Vous avez deja evalue cet etablissement aujourd'hui. Revenez dans " + heuresRestantes + "h."
     };
   }
   return { ok: true };
 }
 
 function enregistrerSoumission(etablissementId) {
-  localStorage.setItem(tchop_avis_${etablissementId}, Date.now().toString());
+  localStorage.setItem("tchop_avis_" + etablissementId, Date.now().toString());
 }
 
-// ── Couche 3 : Empreinte navigateur ──
 function genererFingerprint() {
   const data = [
     navigator.userAgent,
     navigator.language,
-    screen.width + 'x' + screen.height,
+    screen.width + "x" + screen.height,
     screen.colorDepth,
     new Date().getTimezoneOffset(),
     navigator.hardwareConcurrency || 0,
-    navigator.platform || ''
-  ].join('|');
+    navigator.platform || ""
+  ].join("|");
 
   let hash = 0;
   for (let i = 0; i < data.length; i++) {
@@ -88,7 +85,6 @@ function genererFingerprint() {
   return Math.abs(hash).toString(36);
 }
 
-// ── Couche 4 : Score de confiance ──
 function calculerScoreConfiance(donnees) {
   let score = 0;
 
@@ -96,7 +92,6 @@ function calculerScoreConfiance(donnees) {
   if (donnees.matricule_valide) score += 20;
   if (donnees.temps_remplissage >= 60 && donnees.temps_remplissage <= 480) score += 15;
 
-  // Notes variées
   const notes = donnees.notes || [];
   const uniquesNotes = new Set(notes);
   if (uniquesNotes.size >= 3) score += 15;
@@ -104,7 +99,6 @@ function calculerScoreConfiance(donnees) {
   if (donnees.commentaire && donnees.commentaire.length >= 20) score += 10;
   if (donnees.fingerprint_ok) score += 10;
 
-  // Bonus heure d'ouverture
   const heure = new Date().getHours();
   if (heure >= 11 && heure <= 14) score += 5;
 
@@ -112,22 +106,20 @@ function calculerScoreConfiance(donnees) {
 }
 
 function evaluerStatutAvis(score) {
-  if (score >= 70) return 'accepte';
-  if (score >= 40) return 'suspect';
-  return 'rejete';
+  if (score >= 70) return "accepte";
+  if (score >= 40) return "suspect";
+  return "rejete";
 }
 
-// ── Vérification complète avant soumission ──
 async function verifierAvantSoumission(etablissementId) {
   const resultat = {
     ok: false,
-    message: '',
+    message: "",
     gps_ok: false,
     doublon_ok: false,
     fingerprint: genererFingerprint()
   };
 
-  // Vérif doublon
   const doublon = verifierDoublon(etablissementId);
   if (!doublon.ok) {
     resultat.message = doublon.message;
@@ -135,7 +127,6 @@ async function verifierAvantSoumission(etablissementId) {
   }
   resultat.doublon_ok = true;
 
-  // Vérif GPS
   const gps = await verifierGPS();
   resultat.gps_ok = gps.ok;
   if (!gps.ok) {
@@ -146,7 +137,9 @@ async function verifierAvantSoumission(etablissementId) {
   resultat.ok = true;
   resultat.coords = gps.coords;
   return resultat;
-}export {
+}
+
+export {
   verifierAvantSoumission,
   calculerScoreConfiance,
   evaluerStatutAvis,
