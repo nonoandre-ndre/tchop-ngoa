@@ -1,0 +1,244 @@
+/* ===== HEADER ===== */
+.header {
+  background: var(--vert);
+  padding: 14px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: var(--ombre);
+}
+
+.logo-text {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--blanc);
+  letter-spacing: 1px;
+}
+
+.logo-tiret {
+  color: var(--or);
+}
+
+.logo-sub {
+  font-size: 11px;
+  color: var(--or);
+  font-weight: 500;
+  margin-left: 6px;
+  background: rgba(255,255,255,0.15);
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.lang-btn {
+  background: rgba(255,255,255,0.15);
+  color: var(--blanc);
+  border: 1px solid rgba(255,255,255,0.3);
+  padding: 6px 12px;
+  border-radius: var(--rayon-sm);
+  font-size: 13px;
+  cursor: pointer;
+  font-family: 'Poppins', sans-serif;
+}
+
+.admin-link {
+  color: rgba(255,255,255,0.7);
+  font-size: 16px;
+}
+
+/* ===== HERO ===== */
+.hero {
+  background: linear-gradient(135deg, var(--vert) 0%, var(--vert-clair) 100%);
+  padding: 50px 20px;
+  text-align: center;
+  color: var(--blanc);
+}
+
+.hero-title {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  line-height: 1.3;
+}
+
+.hero-sub {
+  font-size: 15px;
+  opacity: 0.85;
+  margin-bottom: 28px;
+}
+
+/* ===== STATS ===== */
+.stats-section {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  padding: 20px 16px;
+  background: var(--blanc);
+  box-shadow: var(--ombre);
+}
+
+.stat-card {
+  text-align: center;
+  padding: 16px 8px;
+  border-radius: var(--rayon-sm);
+  background: var(--vert-pale);
+}
+
+.stat-icon {
+  font-size: 22px;
+  color: var(--vert);
+  display: block;
+  margin-bottom: 6px;
+}
+
+.stat-number {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--vert);
+  display: block;
+}
+
+.stat-label {
+  font-size: 11px;
+  color: var(--gris);
+  display: block;
+  margin-top: 4px;
+}
+
+/* ===== MENU DU JOUR ===== */
+.menu-section {
+  padding: 24px 16px;
+}
+
+.menu-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+}
+
+.menu-card {
+  background: var(--blanc);
+  border-radius: var(--rayon);
+  padding: 16px;
+  box-shadow: var(--ombre);
+  border-left: 4px solid var(--vert);
+}
+
+.menu-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.menu-card-nom {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--vert);
+}
+
+.menu-badge-ouvert {
+  background: var(--vert-pale);
+  color: var(--vert);
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: 20px;
+}
+
+.menu-badge-ferme {
+  background: var(--rouge-clair);
+  color: var(--rouge);
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: 20px;
+}
+
+.menu-plats {
+  font-size: 14px;
+  color: var(--noir);
+  margin-bottom: 8px;
+}
+
+.menu-infos {
+  display: flex;
+  gap: 12px;
+  font-size: 12px;
+  color: var(--gris);
+}
+
+.menu-prix {
+  color: var(--or);
+  font-weight: 600;
+}
+
+.menu-heure {
+  color: var(--gris);
+}
+
+.btn-evaluer {
+  display: block;
+  text-align: center;
+  margin-top: 12px;
+  background: var(--or);
+  color: var(--blanc);
+  padding: 8px;
+  border-radius: var(--rayon-sm);
+  font-size: 13px;
+  font-weight: 500;
+}
+
+/* ===== CLASSEMENT ===== */
+.classement-section {
+  padding: 24px 16px;
+  background: var(--blanc);
+  margin-top: 8px;
+  text-align: center;
+}
+
+.classement-list {
+  margin-bottom: 16px;
+}
+
+.classement-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  background: var(--gris-clair);
+  border-radius: var(--rayon-sm);
+  margin-bottom: 8px;
+  text-align: left;
+}
+
+.classement-rang {
+  font-size: 22px;
+  min-width: 32px;
+}
+
+.classement-nom {
+  flex: 1;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--noir);
+}
+
+.classement-note {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--vert);
+}
+
+.classement-etoiles {
+  font-size: 12px;
+  color: var(--or);
+}
